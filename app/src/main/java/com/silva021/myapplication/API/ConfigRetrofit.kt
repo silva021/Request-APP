@@ -4,10 +4,10 @@ import com.silva021.myapplication.service.LocationService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class ConfigRetrofit {
+class ConfigRetrofit(private val baseUrl : String) {
 
     private val mRetrofitInstance = Retrofit.Builder()
-            .baseUrl("https://servicodados.ibge.gov.br/api/v1/localidades/")
+            .baseUrl(baseUrl)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
