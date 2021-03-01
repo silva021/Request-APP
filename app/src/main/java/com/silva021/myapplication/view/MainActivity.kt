@@ -1,7 +1,9 @@
 package com.silva021.myapplication.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
@@ -28,12 +30,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setSupportActionBar(binding.toolbar)
-        supportActionBar?.title = ""
+        supportActionBar?.setDisplayShowTitleEnabled(false)
         binding.btnRequest.setOnClickListener {
             val call =
                 ConfigRetrofit(binding.edtBaseUrl.text.toString()).LocationService().getAllUf()
-
-
 
             call.enqueue(object : Callback<List<Location>?> {
                 override fun onResponse(
@@ -48,17 +48,12 @@ class MainActivity : AppCompatActivity() {
                                     response.raw().request().url().toString(),
                                     response.raw().request().method(),
                                     response.code(),
-                                    "a"
+                                    "01/03/2021"
                                 )
                             )
-                            withContext(Dispatchers.Main) {
-                                showSnackBar("Salvo no banco ")
-                            }
-
-
-                            binding.txtJson.text = formatJson(Gson().toJson(response.body()))
-                            showSnackBar("Requisao feita com sucesso")
                         }
+                        binding.txtJson.text = formatJson(Gson().toJson(response.body()))
+                        showSnackBar("Requisao feita com sucesso")
 
                     }
                 }
@@ -101,6 +96,16 @@ class MainActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
         return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.menu_item_historic -> {
+                startActivity(Intent(this, HistoricActivity::class.java))
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
 }

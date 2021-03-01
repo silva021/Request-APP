@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "t_Historic")
 data class Historic (
-    @PrimaryKey val id: Int,
+    @PrimaryKey(autoGenerate = true) val id: Int,
     @ColumnInfo(name = "URL") val url : String?,
     @ColumnInfo(name = "typeRequest") val typeRequest : String?,
     @ColumnInfo(name = "code") val code : Int?,

@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:background="@color/color_second"
         app:layout_constraintEnd_toEndOf="parent"
+        android:theme="@style/ThemeOverlay.MaterialComponents.Toolbar.Primary"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -27,7 +28,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:scrollbars="horizontal"
-
         app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
         <com.google.android.material.textfield.TextInputEditText
