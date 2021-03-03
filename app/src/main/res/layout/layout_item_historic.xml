@@ -20,9 +20,9 @@
         android:layout_height="wrap_content"
         android:text="404"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/textView"
-        app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintEnd_toEndOf="@+id/txtMethod"
+        app:layout_constraintStart_toStartOf="@+id/txtMethod"
+        app:layout_constraintTop_toBottomOf="@+id/txtMethod" />
 
     <TextView
         android:id="@+id/txtURL"
@@ -30,9 +30,9 @@
         android:layout_height="0dp"
         android:layout_marginStart="5dp"
         android:text="https://www.youtube.com/watch?v=dMKTONbHRtg"
-        app:layout_constraintBottom_toBottomOf="@+id/textView2"
+        app:layout_constraintBottom_toBottomOf="@+id/txtCode"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView"
-        app:layout_constraintTop_toTopOf="@+id/textView" />
+        app:layout_constraintStart_toEndOf="@+id/txtMethod"
+        app:layout_constraintTop_toTopOf="@+id/txtMethod" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

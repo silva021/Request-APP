@@ -20,7 +20,7 @@ class HistoricActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mBinding = ActivityHistoricBinding.inflate(layoutInflater)
-        setContentView(R.layout.activity_historic)
+        setContentView(mBinding.root)
 
         setSupportActionBar(mBinding.toolbar)
         supportActionBar?.setDisplayShowTitleEnabled(true)
