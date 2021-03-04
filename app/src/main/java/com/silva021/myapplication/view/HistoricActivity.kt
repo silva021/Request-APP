@@ -2,6 +2,7 @@ package com.silva021.myapplication.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.silva021.myapplication.DAO.AppDatabase
@@ -35,11 +36,13 @@ class HistoricActivity : AppCompatActivity() {
         }
     }
 
-    fun initRecycler(list: List<Historic>) {
+    private fun initRecycler(list: List<Historic>) {
+        val dividerItemDecoration = DividerItemDecoration(mBinding.recycler.context, DividerItemDecoration.VERTICAL)
         mAdapter = HistoricAdapter(list)
         mBinding.recycler.adapter = mAdapter
         val layoutManager =
             LinearLayoutManager(applicationContext)
+        mBinding.recycler.addItemDecoration(dividerItemDecoration)
         mBinding.recycler.layoutManager = layoutManager
     }
 }

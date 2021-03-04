@@ -8,7 +8,7 @@ import com.silva021.myapplication.model.Historic
 @Dao
 interface HistoricDAO {
 
-    @Query("select * from t_Historic")
+    @Query("select * from t_Historic order by id desc")
     fun getAllHistoric() :List<Historic>
 
     @Insert

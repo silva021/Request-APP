@@ -12,8 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/color_second"
-        app:layout_constraintEnd_toEndOf="parent"
         android:theme="@style/ThemeOverlay.MaterialComponents.Toolbar.Primary"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -24,10 +24,10 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:hint="Digite sua URL Base"
+        android:scrollbars="horizontal"
         app:helperText="Exemplo: https://apprequest.com.br/api/v1/"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:scrollbars="horizontal"
         app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -36,7 +36,7 @@
             android:layout_height="wrap_content"
             android:maxLines="1"
             android:scrollHorizontally="true"
-            android:text="https://servicodados.ibge.gov.br/api/v1/localidades/" />
+            android:text="https://viacep.com.br/ws/01001000/json/" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button

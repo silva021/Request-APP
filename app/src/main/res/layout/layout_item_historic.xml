@@ -3,22 +3,31 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="40dp"
-    android:padding="5dp">
+    android:layout_height="70dp"
+    android:paddingStart="15dp"
+    android:paddingTop="5dp"
+    android:paddingBottom="5dp">
+
 
     <TextView
-        android:id="@+id/txtMethod"
+        android:id="@+id/txtDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="GET"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/txtCode"
-        android:layout_width="wrap_content"
+        android:id="@+id/txtMethod"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="404"
+        app:layout_constraintEnd_toEndOf="@+id/txtDate"
+        app:layout_constraintStart_toStartOf="@+id/txtDate"
+        app:layout_constraintTop_toBottomOf="@+id/txtDate" />
+
+    <TextView
+        android:id="@+id/txtCode"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/txtMethod"
         app:layout_constraintStart_toStartOf="@+id/txtMethod"
@@ -28,11 +37,11 @@
         android:id="@+id/txtURL"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:gravity="center_vertical|start"
         android:layout_marginStart="5dp"
-        android:text="https://www.youtube.com/watch?v=dMKTONbHRtg"
         app:layout_constraintBottom_toBottomOf="@+id/txtCode"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/txtMethod"
-        app:layout_constraintTop_toTopOf="@+id/txtMethod" />
+        app:layout_constraintStart_toEndOf="@+id/txtDate"
+        app:layout_constraintTop_toTopOf="@+id/txtDate" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
