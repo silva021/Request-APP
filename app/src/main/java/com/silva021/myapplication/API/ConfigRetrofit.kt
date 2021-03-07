@@ -11,5 +11,5 @@ class ConfigRetrofit(baseUrl : String) {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
-    fun RequestService() = mRetrofitInstance.create(RequestService::class.java)
+    fun requestService(): RequestService = mRetrofitInstance.create(RequestService::class.java)
 }

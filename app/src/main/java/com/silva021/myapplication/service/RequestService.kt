@@ -7,8 +7,8 @@ import retrofit2.http.Path
 interface RequestService {
 
     @GET("{endPoint}")
-    fun getAllListObject(@Path("endPoint") endPoint : String) : Call<List<Any>>
+    fun getListObject(@Path("endPoint") endPoint : String) : Call<List<Any>>
 
     @GET("{endPoint}")
-    fun getAllObject(@Path("endPoint") endPoint : String) : Call<Any>
+    fun getObject(@Path("endPoint") endPoint : String) : Call<Any>
 }

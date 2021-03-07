@@ -11,7 +11,7 @@ class AboutActivity : AppCompatActivity() {
     lateinit var mBinding: ActivityAboutBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mBinding = ActivityAboutBinding.inflate(layoutInflater)
+        this.mBinding = ActivityAboutBinding.inflate(layoutInflater)
         setContentView(mBinding.root)
 
         setSupportActionBar(mBinding.toolbar)
