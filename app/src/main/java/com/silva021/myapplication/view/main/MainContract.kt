@@ -1,6 +1,4 @@
-package com.silva021.myapplication.view.Main
-
-import android.content.Context
+package com.silva021.myapplication.view.main
 
 interface MainContract {
     interface View {

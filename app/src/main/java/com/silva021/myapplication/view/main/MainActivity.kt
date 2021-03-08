@@ -1,4 +1,4 @@
-package com.silva021.myapplication.view.Main
+package com.silva021.myapplication.view.main
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
 import com.silva021.myapplication.R
 import com.silva021.myapplication.view.AboutActivity
-import com.silva021.myapplication.view.Historic.HistoricActivity
+import com.silva021.myapplication.view.historic.HistoricActivity
 import com.silva021.myapplication.databinding.ActivityMainBinding as ActivityMainBinding
 
 class MainActivity : AppCompatActivity(), MainContract.View {

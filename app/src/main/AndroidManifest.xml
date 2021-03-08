@@ -11,20 +11,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
-        <activity android:name=".view.AboutActivity"
-            android:parentActivityName=".view.Main.MainActivity"/>
+        <activity android:name=".view.jsonDetails.JsonDetailsActivity" android:parentActivityName=".view.historic.HistoricActivity"/>
         <activity
-            android:name=".view.Historic.HistoricActivity"
-            android:parentActivityName=".view.Main.MainActivity">
+            android:name=".view.AboutActivity"
+            android:parentActivityName=".view.main.MainActivity" />
+        <activity
+            android:name=".view.historic.HistoricActivity"
+            android:parentActivityName=".view.main.MainActivity">
 
-<!--             <intent-filter>-->
-<!--             <action android:name="android.intent.action.MAIN" />-->
-<!--             <category android:name="android.intent.category.LAUNCHER" />-->
-<!--             </intent-filter>-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
-        <activity android:name=".view.Main.MainActivity">
+        <activity android:name=".view.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

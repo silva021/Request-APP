@@ -1,17 +1,18 @@
-package com.silva021.myapplication.view.Historic
+package com.silva021.myapplication.view.historic
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.silva021.myapplication.DAO.AppDatabase
+import android.widget.Toast
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.RecyclerView
 import com.silva021.myapplication.adapter.HistoricAdapter
+import com.silva021.myapplication.adapter.SwipeRequestCallback
 import com.silva021.myapplication.databinding.ActivityHistoricBinding
 import com.silva021.myapplication.model.Historic
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import com.silva021.myapplication.view.jsonDetails.JsonDetailsActivity
+import com.silva021.myapplication.view.jsonDetails.JsonDetailsPresenter
+import com.silva021.myapplication.view.main.MainActivity
 
 class HistoricActivity : AppCompatActivity(), HistoricContract.View {
     lateinit var mBinding: ActivityHistoricBinding
@@ -33,5 +34,18 @@ class HistoricActivity : AppCompatActivity(), HistoricContract.View {
     override fun initRecycler(list: List<Historic>) {
         mAdapter = HistoricAdapter(list)
         mBinding.recycler.adapter = mAdapter
+
+        val swipeRequestCallback = object : SwipeRequestCallback() {
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                list[viewHolder.adapterPosition].url?.let { callMainActivity(it) }
+            }
+        }
+
+        val itemTouchHelper = ItemTouchHelper(swipeRequestCallback)
+        itemTouchHelper.attachToRecyclerView(mBinding.recycler)
+    }
+
+    fun callMainActivity(url: String) {
+        startActivity(Intent(this, JsonDetailsActivity::class.java).putExtra("url", url))
     }
 }

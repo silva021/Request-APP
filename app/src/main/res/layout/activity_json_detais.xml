@@ -4,28 +4,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.historic.HistoricActivity">
+    tools:context=".view.jsonDetails.JsonDetailsActivity">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+        android:id="@+id/toolbar2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/color_second"
-        app:title="Histórico"
         app:titleTextColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
+        android:background="@color/color_second"
         android:theme="@style/ThemeOverlay.MaterialComponents.Toolbar.Primary"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.recyclerview.widget.RecyclerView
+    <ScrollView
         android:layout_width="0dp"
-        android:id="@+id/recycler"
         android:layout_height="0dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:listitem="@layout/layout_item_historic"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar2">
+
+        <TextView
+            android:id="@+id/txtJson"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_second"
+            android:paddingStart="5dp"/>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

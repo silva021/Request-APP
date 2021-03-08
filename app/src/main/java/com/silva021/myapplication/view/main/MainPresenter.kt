@@ -1,10 +1,11 @@
-package com.silva021.myapplication.view.Main
+package com.silva021.myapplication.view.main
 
 import android.content.Context
 import com.google.gson.Gson
 import com.silva021.myapplication.API.ConfigRetrofit
 import com.silva021.myapplication.DAO.AppDatabase
 import com.silva021.myapplication.model.Historic
+import com.silva021.myapplication.utils.Utils
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -15,6 +16,7 @@ import java.util.*
 
 class MainPresenter(private val mView: MainContract.View, private val mContext: Context) :
     MainContract.Presenter {
+
     override fun newRequest(URL: String) {
         mView.showProgress(true)
         try {
@@ -31,6 +33,7 @@ class MainPresenter(private val mView: MainContract.View, private val mContext: 
             })
         } catch (e: Exception) {
             mView.showSnackBar("Ocorreu um problema")
+            mView.showProgress(false)
         }
     }
 
@@ -58,7 +61,7 @@ class MainPresenter(private val mView: MainContract.View, private val mContext: 
                     response.request().url().toString(),
                     response.request().method(),
                     response.code(),
-                    returnDate()
+                    Utils.returnDate()
                 )
             )
         }
@@ -67,7 +70,7 @@ class MainPresenter(private val mView: MainContract.View, private val mContext: 
     override fun responseRequest(body: Any?, response: okhttp3.Response) {
         val text: String = when (response.code()) {
             200 -> {
-                mView.responseSuccess(formatJson(Gson().toJson(body)))
+                mView.responseSuccess(Utils.formatJson(Gson().toJson(body)))
                 "Requisição feita com sucesso"
             }
             404 -> {
@@ -82,32 +85,5 @@ class MainPresenter(private val mView: MainContract.View, private val mContext: 
         insertRequestHistoric(response)
     }
 
-    private fun returnDate(): String {
-        val date = Calendar.getInstance()
-        return date.get(Calendar.DAY_OF_MONTH)
-            .toString() + "-" + (date.get(Calendar.MONTH) + 1).toString() + "-" + date.get(Calendar.YEAR)
-            .toString()
 
-    }
-
-    private fun formatJson(json: String): String {
-        val jsonBuilder = StringBuilder()
-        var indentString = ""
-        (json.indices).forEach { i ->
-            when (val letter = json[i]) {
-                '{', '[' -> {
-                    jsonBuilder.append("\n" + indentString + letter + "\n")
-                    indentString += "\t\t";
-                    jsonBuilder.append(indentString);
-                }
-                '}', ']' -> {
-                    indentString = indentString.replaceFirst("\t\t", "")
-                    jsonBuilder.append("\n" + indentString + letter)
-                }
-                ',' -> jsonBuilder.append(letter + "\n" + indentString);
-                else -> jsonBuilder.append(letter);
-            }
-        }
-        return jsonBuilder.toString()
-    }
 }

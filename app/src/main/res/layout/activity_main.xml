@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.Main.MainActivity">
+    tools:context=".view.main.MainActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -35,8 +35,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:maxLines="1"
-            android:scrollHorizontally="true"
-            android:text="https://viacep.com.br/ws/01001000/json/" />
+            android:scrollHorizontally="true"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button

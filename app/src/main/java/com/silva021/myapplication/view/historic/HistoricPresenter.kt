@@ -1,4 +1,4 @@
-package com.silva021.myapplication.view.Historic
+package com.silva021.myapplication.view.historic
 
 import android.content.Context
 import com.silva021.myapplication.DAO.AppDatabase
