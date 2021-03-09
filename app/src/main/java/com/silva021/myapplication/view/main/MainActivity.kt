@@ -6,6 +6,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.google.android.material.snackbar.Snackbar
 import com.silva021.myapplication.R
 import com.silva021.myapplication.view.AboutActivity
@@ -62,6 +63,16 @@ class MainActivity : AppCompatActivity(), MainContract.View {
 
     override fun responseSuccess(json: String) {
         mBinding.txtJson.text = json
+    }
+
+    override fun  updateTextView(methodRequest :String, codeResponse : Int) {
+        mBinding.txtMethod?.text = methodRequest
+        mBinding.txtCode?.text = codeResponse.toString()
+
+        when (codeResponse) {
+            200 -> mBinding.txtCode?.setTextColor(ContextCompat.getColor(mBinding.root.context, R.color.green))
+            else ->mBinding.txtCode?.setTextColor(ContextCompat.getColor(mBinding.root.context, R.color.red))
+        }
     }
 
 }

@@ -4,6 +4,7 @@ interface MainContract {
     interface View {
         fun showSnackBar(text: String)
         fun showProgress(visibility : Boolean)
+        fun updateTextView(methodRequest :String, codeResponse : Int)
         fun responseSuccess(json : String)
     }
 

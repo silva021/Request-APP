@@ -14,27 +14,8 @@
         android:background="@color/color_second"
         android:theme="@style/ThemeOverlay.MaterialComponents.Toolbar.Primary"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="REQUEST APP"
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.appcompat.widget.Toolbar>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout"
@@ -70,33 +51,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="JSON"
-        android:layout_marginStart="5dp"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="@+id/btnRequest"
         app:layout_constraintStart_toStartOf="@+id/cardView" />
-
-    <TextView
-        android:id="@+id/txtCode"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="5dp"
-        app:layout_constraintBottom_toBottomOf="@+id/btnRequest"
-        app:layout_constraintEnd_toEndOf="@+id/cardView" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/txtMethod"
-        android:layout_marginEnd="5dp"
-        app:layout_constraintBottom_toBottomOf="@+id/btnRequest"
-        app:layout_constraintEnd_toStartOf="@+id/txtCode" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="10dp"
+        android:outlineSpotShadowColor="@color/color_second"
         app:cardCornerRadius="4dp"
-        app:cardElevation="5dp"
+        app:cardElevation="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -104,6 +70,7 @@
 
         <ScrollView
             android:id="@+id/scrollView2"
+            android:background="@color/background"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -133,5 +100,6 @@
 
         </ScrollView>
     </androidx.cardview.widget.CardView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

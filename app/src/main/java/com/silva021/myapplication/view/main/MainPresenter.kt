@@ -80,6 +80,7 @@ class MainPresenter(private val mView: MainContract.View, private val mContext: 
                 "Erro " + response.code()
             }
         }
+        mView.updateTextView(response.request().method(),response.code() )
         mView.showSnackBar(text)
         mView.showProgress(false)
         insertRequestHistoric(response)
