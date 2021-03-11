@@ -11,7 +11,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
-        <activity android:name=".view.SavedRequest.SavedRequestActivity"></activity>
+        <activity
+            android:name=".view.savedRequest.SavedRequestActivity"
+            android:parentActivityName=".view.main.MainActivity">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+        </activity>
         <activity
             android:name=".view.jsonDetails.JsonDetailsActivity"
             android:parentActivityName=".view.historic.HistoricActivity" />
@@ -28,11 +35,10 @@
             <!-- </intent-filter> -->
         </activity>
         <activity android:name=".view.main.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+                        <intent-filter>
+                            <action android:name="android.intent.action.MAIN" />
+                            <category android:name="android.intent.category.LAUNCHER" />
+                        </intent-filter>
         </activity>
     </application>
 

@@ -35,31 +35,6 @@ class HistoricActivity : AppCompatActivity(), HistoricContract.View {
     override fun initRecycler(list: List<Historic>) {
         mAdapter = HistoricAdapter(list)
         mBinding.recycler.adapter = mAdapter
-
-        val swipeRequestCallback = object : SwipeRequestCallback() {
-            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                list[viewHolder.adapterPosition].url?.let { callMainActivity(it) }
-            }
-        }
-
-        val itemTouchHelper = ItemTouchHelper(swipeRequestCallback)
-        itemTouchHelper.attachToRecyclerView(mBinding.recycler)
     }
 
-    fun callMainActivity(url: String) {
-        startActivityForResult(
-            Intent(this, JsonDetailsActivity::class.java).putExtra("url", url),
-            Utils.REQUEST_CODE_HISTORIC
-        )
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        when (requestCode) {
-            Utils.REQUEST_CODE_HISTORIC -> mAdapter.notifyDataSetChanged()
-            else -> {
-
-            }
-        }
-    }
 }

@@ -8,6 +8,9 @@
         android:icon="@drawable/ic_share"
         app:showAsAction="ifRoom"/>
     <item
+        android:id="@+id/menu_item_saved"
+        android:title="Salvos" />
+    <item
         android:id="@+id/menu_item_historic"
         android:title="Histórico" />
     <item

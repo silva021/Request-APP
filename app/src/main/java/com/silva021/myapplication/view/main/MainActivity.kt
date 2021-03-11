@@ -16,6 +16,7 @@ import com.silva021.myapplication.listener.DialogSavedRequestLinester
 import com.silva021.myapplication.utils.DialogSavedRequest
 import com.silva021.myapplication.view.AboutActivity
 import com.silva021.myapplication.view.historic.HistoricActivity
+import com.silva021.myapplication.view.savedRequest.SavedRequestActivity
 import com.silva021.myapplication.databinding.ActivityMainBinding as ActivityMainBinding
 
 class MainActivity : AppCompatActivity(), MainContract.View, DialogSavedRequestLinester {
@@ -72,6 +73,10 @@ class MainActivity : AppCompatActivity(), MainContract.View, DialogSavedRequestL
                 startActivity(Intent(this, AboutActivity::class.java))
                 true
             }
+            R.id.menu_item_saved -> {
+                startActivity(Intent(this, SavedRequestActivity::class.java))
+                true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }
@@ -92,7 +97,7 @@ class MainActivity : AppCompatActivity(), MainContract.View, DialogSavedRequestL
 
     }
 
-    fun createDialogSaveRequest() {
+    private fun createDialogSaveRequest() {
         val mDialog = DialogSavedRequest(mURL, this)
         mDialog.show(supportFragmentManager, "dialogSaveRequest")
     }
@@ -112,7 +117,6 @@ class MainActivity : AppCompatActivity(), MainContract.View, DialogSavedRequestL
                 color
             )
         )
-
     }
 
     override fun requestSavedSucess() {

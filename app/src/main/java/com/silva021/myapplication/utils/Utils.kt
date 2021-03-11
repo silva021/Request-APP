@@ -4,7 +4,7 @@ import java.util.*
 
 class Utils {
     companion object Method {
-        val REQUEST_CODE_HISTORIC : Int  = 21
+        val REQUEST_CODE_SAVED_REQUEST : Int  = 21
         fun returnDate(): String {
             val date = Calendar.getInstance()
             return date.get(Calendar.DAY_OF_MONTH)
