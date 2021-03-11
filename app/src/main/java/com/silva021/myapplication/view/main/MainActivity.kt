@@ -29,7 +29,6 @@ class MainActivity : AppCompatActivity(), MainContract.View, DialogSavedRequestL
         setContentView(mBinding.root)
 
         setSupportActionBar(mBinding.toolbar)
-        supportActionBar?.setDisplayShowTitleEnabled(false)
         mPresenter = MainPresenter(this, applicationContext)
 
         mBinding.btnRequest.setOnClickListener {
