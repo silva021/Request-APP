@@ -10,6 +10,7 @@ import com.silva021.myapplication.adapter.HistoricAdapter
 import com.silva021.myapplication.adapter.SwipeRequestCallback
 import com.silva021.myapplication.databinding.ActivityHistoricBinding
 import com.silva021.myapplication.model.Historic
+import com.silva021.myapplication.utils.Utils
 import com.silva021.myapplication.view.jsonDetails.JsonDetailsActivity
 import com.silva021.myapplication.view.jsonDetails.JsonDetailsPresenter
 import com.silva021.myapplication.view.main.MainActivity
@@ -46,6 +47,19 @@ class HistoricActivity : AppCompatActivity(), HistoricContract.View {
     }
 
     fun callMainActivity(url: String) {
-        startActivity(Intent(this, JsonDetailsActivity::class.java).putExtra("url", url))
+        startActivityForResult(
+            Intent(this, JsonDetailsActivity::class.java).putExtra("url", url),
+            Utils.REQUEST_CODE_HISTORIC
+        )
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        when (requestCode) {
+            Utils.REQUEST_CODE_HISTORIC -> mAdapter.notifyDataSetChanged()
+            else -> {
+
+            }
+        }
     }
 }

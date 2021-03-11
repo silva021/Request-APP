@@ -12,5 +12,5 @@ interface HistoricDAO {
     fun getAllHistoric() :List<Historic>
 
     @Insert
-    fun insertHistoric(vararg historic: Historic )
+    fun insertHistoric(vararg historic: Historic)
 }

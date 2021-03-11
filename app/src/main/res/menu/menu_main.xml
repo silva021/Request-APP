@@ -4,6 +4,7 @@
     <item
         android:id="@+id/menu_item_share"
         android:title="Compartilhar"
+        android:visible="false"
         android:icon="@drawable/ic_share"
         app:showAsAction="ifRoom"/>
     <item

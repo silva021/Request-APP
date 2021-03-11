@@ -2,6 +2,7 @@ package com.silva021.myapplication.view.jsonDetails
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import com.silva021.myapplication.R
 import com.silva021.myapplication.databinding.ActivityJsonDetaisBinding
 
@@ -25,5 +26,10 @@ class JsonDetailsActivity : AppCompatActivity(), JsonDetailsContract.View {
 
     override fun showJson(json: String) {
         mBinding.txtJson.text = json
+    }
+
+    override fun showProgress(visibility: Boolean) {
+        mBinding.progressCircular.visibility = if (visibility) View.VISIBLE else View.GONE
+        mBinding.txtJson.visibility = if (visibility) View.GONE else View.VISIBLE
     }
 }

@@ -1,11 +1,14 @@
 package com.silva021.myapplication.view.main
 
+import android.view.View
+
 interface MainContract {
     interface View {
         fun showSnackBar(text: String)
         fun showProgress(visibility : Boolean)
-        fun updateTextView(methodRequest :String, codeResponse : Int)
+        fun updateTextView(response: okhttp3.Response, color : Int)
         fun responseSuccess(json : String)
+        fun hideKeyboard()
     }
 
     interface Presenter {

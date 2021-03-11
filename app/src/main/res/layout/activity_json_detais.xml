@@ -23,7 +23,7 @@
         android:layout_height="0dp"
         android:layout_margin="10dp"
         app:cardCornerRadius="4dp"
-        app:cardElevation="5dp"
+        app:cardElevation="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -54,8 +54,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingStart="5dp"
-                    android:textColor="@color/color_second"
-                    android:visibility="gone" />
+                    android:visibility="gone"
+                    android:textColor="@color/color_second" />
             </LinearLayout>
 
         </ScrollView>

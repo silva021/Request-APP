@@ -4,6 +4,7 @@ import android.content.Context
 import com.google.gson.Gson
 import com.silva021.myapplication.API.ConfigRetrofit
 import com.silva021.myapplication.DAO.AppDatabase
+import com.silva021.myapplication.R
 import com.silva021.myapplication.model.Historic
 import com.silva021.myapplication.utils.Utils
 import kotlinx.coroutines.CoroutineScope
@@ -12,18 +13,20 @@ import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.net.SocketTimeoutException
 import java.util.*
 
 class MainPresenter(private val mView: MainContract.View, private val mContext: Context) :
     MainContract.Presenter {
 
     override fun newRequest(URL: String) {
+        mView.hideKeyboard()
         mView.showProgress(true)
         try {
             val call = ConfigRetrofit(URL).requestService().getListObject("")
             call.enqueue(object : Callback<List<Any>?> {
                 override fun onResponse(call: Call<List<Any>?>, response: Response<List<Any>?>) {
-                    responseRequest(response.body(), response.raw())
+                    responseRequest(response, response.raw())
                 }
 
                 override fun onFailure(call: Call<List<Any>?>, t: Throwable) {
@@ -47,7 +50,12 @@ class MainPresenter(private val mView: MainContract.View, private val mContext: 
                     }
 
                     override fun onFailure(call: Call<Any?>, t: Throwable) {
-                        mView.showSnackBar(t.message.toString())
+                        if (t.cause is SocketTimeoutException) {
+                            mView.showSnackBar("O tempo de requisição expirou, verifique sua internet e tente novamente")
+                        } else {
+                            mView.showSnackBar(t.message.toString())
+                        }
+                        mView.showProgress(visibility = false)
                     }
                 }
             )
@@ -80,9 +88,10 @@ class MainPresenter(private val mView: MainContract.View, private val mContext: 
                 "Erro " + response.code()
             }
         }
-        mView.updateTextView(response.request().method(),response.code() )
+        mView.updateTextView(response, if (response.code() == 200) R.color.green else R.color.red )
         mView.showSnackBar(text)
         mView.showProgress(false)
+        mView.hideKeyboard()
         insertRequestHistoric(response)
     }
 

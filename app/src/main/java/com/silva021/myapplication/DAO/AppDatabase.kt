@@ -5,8 +5,9 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.silva021.myapplication.model.Historic
+import com.silva021.myapplication.model.RequestSaved
 
-@Database(entities = [Historic::class], version = 1)
+@Database(entities = [Historic::class, RequestSaved::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {
     companion object {
         fun getInstanceDataBase(context: Context) =
@@ -14,4 +15,5 @@ abstract class AppDatabase : RoomDatabase() {
     }
 
     abstract fun historyDao(): HistoricDAO
+    abstract fun requestSavedDAO() : RequestSavedDAO
 }
