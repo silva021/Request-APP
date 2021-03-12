@@ -7,36 +7,37 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.google.android.material.snackbar.Snackbar
 import com.silva021.myapplication.R
+import com.silva021.myapplication.databinding.ActivityMainBinding
 import com.silva021.myapplication.listener.DialogSavedRequestLinester
+import com.silva021.myapplication.utils.ShareRequestBottomSheet
 import com.silva021.myapplication.utils.DialogSavedRequest
 import com.silva021.myapplication.view.AboutActivity
 import com.silva021.myapplication.view.historic.HistoricActivity
 import com.silva021.myapplication.view.savedRequest.SavedRequestActivity
-import com.silva021.myapplication.databinding.ActivityMainBinding as ActivityMainBinding
 
-class MainActivity : AppCompatActivity(), MainContract.View, DialogSavedRequestLinester {
+
+class MainActivity : AppCompatActivity(), MainContract.View {
     private lateinit var mBinding: ActivityMainBinding
     private lateinit var mPresenter: MainPresenter
     private lateinit var mMenu: Menu
     private lateinit var mURL: String
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(mBinding.root)
-
         setSupportActionBar(mBinding.toolbar)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
         mPresenter = MainPresenter(this, applicationContext)
 
         mBinding.btnRequest.setOnClickListener {
             cleanFields()
             mPresenter.newRequest(mBinding.edtBaseUrl.text.toString())
         }
-
     }
 
     fun cleanFields() {
@@ -66,7 +67,7 @@ class MainActivity : AppCompatActivity(), MainContract.View, DialogSavedRequestL
                 true
             }
             R.id.menu_item_share -> {
-                createDialogSaveRequest()
+                showBottomSheet()
                 true
             }
             R.id.menu_item_about -> {
@@ -81,8 +82,14 @@ class MainActivity : AppCompatActivity(), MainContract.View, DialogSavedRequestL
         }
     }
 
+    private fun showBottomSheet() {
+        ShareRequestBottomSheet(mBinding.txtJson.text.toString(), mURL).apply {
+            show(supportFragmentManager, ShareRequestBottomSheet.TAG)
+        }
+    }
+
     override fun showSnackBar(text: String) {
-        Snackbar.make(mBinding.root, text, Snackbar.LENGTH_LONG)
+        Snackbar.make(mBinding.root, text, Snackbar.LENGTH_SHORT)
             .setAnimationMode(Snackbar.ANIMATION_MODE_FADE).show()
     }
 
@@ -95,11 +102,6 @@ class MainActivity : AppCompatActivity(), MainContract.View, DialogSavedRequestL
         mBinding.txtJson.text = json
         mMenu.findItem(R.id.menu_item_share).setVisible(true)
 
-    }
-
-    private fun createDialogSaveRequest() {
-        val mDialog = DialogSavedRequest(mURL, this)
-        mDialog.show(supportFragmentManager, "dialogSaveRequest")
     }
 
     override fun hideKeyboard() {
@@ -117,10 +119,6 @@ class MainActivity : AppCompatActivity(), MainContract.View, DialogSavedRequestL
                 color
             )
         )
-    }
-
-    override fun requestSavedSucess() {
-        hideKeyboard()
     }
 
 }

@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="5dp"
+    android:backgroundTint="@color/color_item"
     app:cardCornerRadius="2dp"
     app:cardElevation="3dp">
 
@@ -20,13 +21,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Meu Cep"
+            android:textColor="@color/white"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/txtURL"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="https://viacep.com.br/ws/23812500/json/" />
-
+            android:text="https://viacep.com.br/ws/23812500/json/"
+            android:textColor="@color/white" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>

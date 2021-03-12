@@ -4,26 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".view.AboutActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:background="@color/color_second"
-        app:titleTextColor="@color/white"
         android:layout_height="wrap_content"
+        android:background="@color/color_second"
+        android:theme="@style/ThemeOverlay.MaterialComponents.Toolbar.Primary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:theme="@style/ThemeOverlay.MaterialComponents.Toolbar.Primary" />
+        app:titleTextColor="@color/white" />
 
     <Button
         android:id="@+id/btnLinkedin"
-        style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10sp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="10sp"
+        android:layout_marginEnd="10dp"
+        android:backgroundTint="@color/color_item"
         android:gravity="center_vertical"
         android:text="Linkedin"
         app:icon="@drawable/ic_linkedin"
@@ -33,12 +35,14 @@
 
     <Button
         android:id="@+id/btnGitHub"
-        style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10sp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:backgroundTint="@color/color_item"
         android:gravity="center_vertical"
         android:text="GitHub"
+        android:textColor="@color/white"
         app:icon="@drawable/ic_github"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

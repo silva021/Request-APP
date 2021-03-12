@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".view.jsonDetails.JsonDetailsActivity">
 
     <androidx.appcompat.widget.Toolbar
@@ -30,9 +31,10 @@
         app:layout_constraintTop_toBottomOf="@+id/toolbar2">
 
         <ScrollView
-            android:id="@+id/scrollView2"
+            android:id="@+id/scrollView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@color/color_second">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -53,9 +55,11 @@
                     android:id="@+id/txtJson"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="monospace"
                     android:paddingStart="5dp"
-                    android:visibility="gone"
-                    android:textColor="@color/color_second" />
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
             </LinearLayout>
 
         </ScrollView>
